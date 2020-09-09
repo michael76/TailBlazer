@@ -9,6 +9,7 @@ using TailBlazer.Domain.Formatting;
 using TailBlazer.Domain.Infrastructure;
 using TailBlazer.Domain.Ratings;
 using TailBlazer.Domain.Settings;
+using System.Linq;
 
 namespace TailBlazer.Views.Formatting
 {
@@ -23,13 +24,19 @@ namespace TailBlazer.Views.Formatting
              var themeSetter =  setting.Value.Select(options => options.Theme)
                 .DistinctUntilChanged()
                 .ObserveOn(schedulerProvider.MainThread)
-                .Subscribe(theme =>
+                .Subscribe(formattingTheme =>
                 {
-                    var dark = theme == Theme.Dark;
+                    var dark = formattingTheme == Domain.Formatting.Theme.Dark;
                     var paletteHelper = new PaletteHelper();
+                    var theme = paletteHelper.GetTheme();
+                    theme.SetBaseTheme(dark ? MaterialDesignThemes.Wpf.Theme.Dark : MaterialDesignThemes.Wpf.Theme.Light);
 
-                    paletteHelper.SetLightDark(dark);
-                    paletteHelper.ReplaceAccentColor(theme.GetAccentColor());
+                    var name = formattingTheme.GetAccentColor();
+                    var swatch = new MaterialDesignColors.SwatchesProvider().Swatches.FirstOrDefault(
+                        s => string.Compare(s.Name, name, StringComparison.InvariantCultureIgnoreCase) == 0 && s.IsAccented);
+                    theme.SetSecondaryColor(swatch.AccentExemplarHue.Color);
+
+                    paletteHelper.SetTheme(theme);
                 });
 
             var frameRate = ratingService.Metrics
