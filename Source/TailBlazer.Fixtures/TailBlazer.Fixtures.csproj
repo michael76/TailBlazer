@@ -1,136 +1,31 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B7A99C2B-9833-4B7F-BE91-2329B22517B3}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TailBlazer.Fixtures</RootNamespace>
-    <AssemblyName>TailBlazer.Fixtures</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Copyright>Copyright ©  2015</Copyright>
+    <Title>TailBlazer.Fixtures</Title>
+    <Product>TailBlazer.Fixtures</Product>	
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ColourProviderFixture.cs" />
-    <Compile Include="DefaultColourSelectorFixture.cs" />
-    <Compile Include="DefaultIconSelectorFixture.cs" />
-    <Compile Include="DisplayTextFixture.cs" />
-    <Compile Include="ExlusionFilterFixture.cs" />
-    <Compile Include="FileDropFixture.cs" />
-    <Compile Include="IconDescriptionFixture.cs" />
-    <Compile Include="IconProviderFixture.cs" />
-    <Compile Include="SearchHintEx.cs" />
-    <Compile Include="StartFromFixture.cs" />
-    <Compile Include="FileSearchFixture.cs" />
-    <Compile Include="FileSegmentFixture.cs" />
-    <Compile Include="FileSegmentUsingExtensionFixture.cs" />
-    <Compile Include="FileTailerFixture.cs" />
-    <Compile Include="FileWatchFixture.cs" />
-    <Compile Include="LargeFileGenerator.cs" />
-    <Compile Include="LogFixtures.cs" />
-    <Compile Include="FileNamerFixture.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingsConversion.cs" />
-    <Compile Include="SchedulerEx.cs" />
-    <Compile Include="IndexerFixture.cs" />
-    <Compile Include="StateBucketFixture.cs" />
-    <Compile Include="SettingsStoreFixture.cs" />
-    <Compile Include="SplitFileByMatchingTextFixture.cs" />
-    <Compile Include="StringExFixture.cs" />
-    <Compile Include="TestFile.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TailBlazer.Domain\TailBlazer.Domain.csproj">
-      <Project>{332F8BEB-1743-4B41-8953-A66A57F2503D}</Project>
-      <Name>TailBlazer.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TailBlazer\TailBlazer.csproj">
-      <Project>{EBF74AA2-F4C2-4AE9-A6CF-33F3414893B7}</Project>
-      <Name>TailBlazer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="DynamicData">
-      <Version>6.16.9</Version>
-    </PackageReference>
-    <PackageReference Include="FluentAssertions">
-      <Version>5.10.3</Version>
-    </PackageReference>
-    <PackageReference Include="MaterialDesignThemes">
-      <Version>3.1.3</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Reactive.Testing">
-      <Version>4.4.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Collections.Immutable">
-      <Version>1.7.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Reactive">
-      <Version>4.4.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
-      <Version>4.7.1</Version>
-    </PackageReference>
-    <PackageReference Include="xunit">
-      <Version>2.4.1</Version>
-    </PackageReference>
-    <PackageReference Include="xunit.runner.visualstudio">
-      <Version>2.4.3</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    <PackageReference Include="DynamicData" Version="6.16.9" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="MaterialDesignThemes" Version="3.1.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+    <PackageReference Include="Microsoft.Reactive.Testing" Version="4.4.1" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
+    <PackageReference Include="System.Reactive" Version="4.4.1" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.7.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\TailBlazer.Domain\TailBlazer.Domain.csproj" />
+    <ProjectReference Include="..\TailBlazer\TailBlazer.csproj" />
+  </ItemGroup>
+
 </Project>

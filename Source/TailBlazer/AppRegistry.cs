@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using StructureMap;
 using TailBlazer.Domain.FileHandling;
 using TailBlazer.Domain.FileHandling.Search;
@@ -25,12 +26,14 @@ namespace TailBlazer.Infrastucture
                 // should use the default config which is a resource
                 using (var stream = new MemoryStream(System.Text.Encoding.ASCII.GetBytes(TailBlazer.Properties.Resources.log4net)))
                 {
-                    log4net.Config.XmlConfigurator.Configure(stream);
+                    var repository = log4net.LogManager.GetRepository(Assembly.GetExecutingAssembly());
+                    log4net.Config.XmlConfigurator.Configure(repository, stream);
                 }
             }
             else
             {
-                log4net.Config.XmlConfigurator.ConfigureAndWatch(new FileInfo(path));
+                var repository = log4net.LogManager.GetRepository(Assembly.GetExecutingAssembly());
+                log4net.Config.XmlConfigurator.ConfigureAndWatch(repository, new FileInfo(path));
             }
             For<ILogger>().Use<Log4NetLogger>().Ctor<Type>("type").Is(x => x.ParentType).AlwaysUnique();
 

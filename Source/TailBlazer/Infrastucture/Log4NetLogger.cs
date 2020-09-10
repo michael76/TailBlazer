@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using System.Reflection;
 using log4net;
 using TailBlazer.Domain.Infrastructure;
 
@@ -19,7 +20,7 @@ namespace TailBlazer.Infrastucture
 
             if (!genericArgs.Any())
             {
-                _log = LogManager.GetLogger(name);
+                _log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), name);
             }
             else
             {
@@ -27,13 +28,13 @@ namespace TailBlazer.Infrastucture
                 var startOfGeneric = name.IndexOf("`", StringComparison.Ordinal);
                 name = name.Substring(0,startOfGeneric);
                 var generics = genericArgs.Select(t=>t.Name).ToDelimited();
-                _log = LogManager.GetLogger($"{name}<{generics}>");
+                _log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), $"{name}<{generics}>");
             }
         }
 
         public Log4NetLogger(string name)
         {
-            _log = LogManager.GetLogger(name);
+            _log = LogManager.GetLogger(Assembly.GetExecutingAssembly(), name);
         }
 
         public void Debug(string message, params object[] values)
