@@ -9,6 +9,7 @@
     <Description>Tail blazer is a file tail utility</Description>
     <Copyright>Copyright © 2015</Copyright>
     <StartupObject>TailBlazer.BootStrap</StartupObject>
+    <ApplicationIcon>tailblazer.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +27,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TailBlazer.Domain\TailBlazer.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Log4Net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
